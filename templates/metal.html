@@ -1,0 +1,481 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock title %}
+
+{% block body %}
+
+{% load static %}
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metal Scrap Importer</title>
+<style>
+    /* Global Styles */
+    :root {
+        --primary-dark: #0A1E35;
+        --primary-accent: #D4AF37;
+        --text-light: #FFFFFF;
+        --text-gray: #CCCCCC;
+    }
+    
+    body {
+        font-family: 'PT Sans', Arial, Helvetica, sans-serif;
+        color: var(--text-gray);
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        background-color: var(--primary-dark);
+    }
+    
+    /* Header Image Section */
+    .header-image {
+        width: 100%;
+        max-width: 1129px;
+        margin: 0 auto;
+        position: relative;
+    }
+    
+    .header-image::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(10, 30, 53, 0.7), rgba(10, 30, 53, 0.9));
+    }
+    
+    .header-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+    
+    /* Content Sections */
+    .content-section {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+    
+    .two-third {
+        width: 66.66%;
+        float: left;
+        padding-right: 4%;
+        box-sizing: border-box;
+    }
+    
+    .one-third {
+        width: 33.33%;
+        float: left;
+        box-sizing: border-box;
+    }
+    
+    /* Typography */
+    h1, h2, h3 {
+        color: var(--primary-accent);
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+        margin-bottom: 25px;
+        text-transform: uppercase;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+        margin: 30px 0 20px;
+    }
+    
+    h3 {
+        font-size: 1.4rem;
+        margin: 25px 0 15px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        padding-bottom: 8px;
+    }
+    
+    /* Lists */
+    ul, ol {
+        margin: 20px 0;
+        padding-left: 20px;
+    }
+    
+    li {
+        margin-bottom: 10px;
+    }
+    
+    /* Links */
+    a {
+        color: var(--primary-accent);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    
+    a:hover {
+        color: #c19b2e;
+    }
+    
+    /* Form Styles */
+    .contact-form {
+        margin-top: 30px;
+        background: rgba(255,255,255,0.05);
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 4px;
+        box-sizing: border-box;
+        background: rgba(255,255,255,0.05);
+        color: var(--text-light);
+    }
+    
+    .contact-form input[type="submit"] {
+        background: var(--primary-accent);
+        color: var(--primary-dark);
+        border: none;
+        padding: 15px 25px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    
+    .contact-form input[type="submit"]:hover {
+        background: #c19b2e;
+    }
+    
+    /* Clearfix */
+    .clearfix::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+        .two-third, .one-third {
+            width: 100%;
+            float: none;
+            padding-right: 0;
+        }
+        
+        .one-third {
+            margin-top: 40px;
+        }
+        
+        h1 {
+            font-size: 1.8rem;
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+        }
+        
+        h3 {
+            font-size: 1.3rem;
+        }
+    }
+</style>
+
+<div class="post-content">
+    <!-- Header Image -->
+    <div class="header-image">
+        <img src="https://www.mudraglobal.com/wp-content/uploads/2020/09/Metal-and-alloy.jpeg" alt="Metal scrap importer | Metals and Alloys" width="1129" height="550">
+    </div>
+    
+    <!-- Main Content Section -->
+    <div class="content-section clearfix">
+        <div class="two-third">
+            <h1><strong>Metal Scrap Importer</strong></h1>
+            <p>With time, growth in the supply of metal scraps is observed. The scrap metal is extensively used in the construction and manufacturing industries making it in demand. Also, as these scraps are recycled and used again in various industries, it helps in the development of a sustainable environment. As a growing company of metal scrap importer, we are striving towards the growth of the metal scraps and alloys industry.</p>
+            
+            <p>The metal scraps which is imported can be of various types:</p>
+            <ul>
+                <li>Aluminum</li>
+                <li>Brass</li>
+                <li>Carbide</li>
+                <li>Cobalt</li>
+                <li>Copper</li>
+                <li>Gold</li>
+                <li>Iron</li>
+                <li>Lead</li>
+                <li>Nickel</li>
+                <li>Silver</li>
+                <li>Steel</li>
+                <li>Titanium</li>
+                <li>Tungsten</li>
+            </ul>
+            
+            <h2>International supplies from various countries</h2>
+            <p>International supplies from various countries are executed such as:</p>
+            <ul>
+                <li>Import metal scrap from Africa to India</li>
+                <li>Import metal scrap from the USA to India</li>
+                <li>Import metal scrap from UAE to India.</li>
+            </ul>
+            
+            <p>Following are some of the business standards and guidelines that we follow while supplying metal scraps and alloys –</p>
+            
+            <h2>Metal scrap policy:</h2>
+            <ol>
+                <li>According to the foreign trade policy and business standards, any type of metal scrap is allowed as long as it does not contain any hazardous material, radioactive waste, toxic waste, any kind of arms, ammunition, shells, mines, cartridges(used or live) or any other explosives.</li>
+                <li>The director-general of foreign trade released a notice in 2017 stating that all un-shredded scrap metal imports must be shipped to ports equipped with radiation detection equipment.</li>
+                <li>Imports permitted in the shredded form without a license can be in the case of certain metals (iron, nickel, tin, aluminum, zinc, copper, magnesium, steel) coming under specified entries in the <a href="https://www.intracen.org/">ITC</a> (HS) classification.</li>
+            </ol>
+            
+            <h3>How to import copper scrap:</h3>
+            <p><strong>Some of the necessary process/documentation of importing copper scrap are:</strong></p>
+            <ul>
+                <li>According to the hazardous waste handling rules (2008) copper scrap in metallic, non-dispersible form and mixed non-ferrous metal, heavy fraction scrap not containing any constituents mentioned in schedule ii is permitted.</li>
+                <li>A necessary certificate of clearance is needed from the Pollution Control Board. There can be many products that can have an effect on the environment thus to import specific kinds of effecting product clearance is needed from the pollution control board.</li>
+                <li>A pre-Shipment inspection certificate is needed which is given by the agency of the exporter country.</li>
+                <li>Government registration is required to act as a metal scrap importer.</li>
+            </ul>
+            
+            <p>Therefore from the above-mentioned information and guidelines, one can understand the basics of the system of trading metal scraps in and around the world and with the changing times of Globalization, the demand for metal scrap is increasing making the import of scraps a much talked about industry. With the aim of providing quality supplying services <a href="https://www.mudraglobal.com/">International Trading Company</a> acts as a leading metal scrap importer.</p>
+        </div>
+        
+        <div class="one-third">
+            <h2>Get In Touch</h2>
+            <div class="contact-form">
+                <form action="/metal-scrap/" method="post">
+                    <input type="text" name="text-957" placeholder="Name" required>
+                    <input type="email" name="email-527" placeholder="Email" required>
+                    <input type="text" name="text-569" placeholder="Contact Number" required>
+                    <input type="text" name="text-679" placeholder="Country Name" required>
+                    <textarea name="your-message" cols="40" rows="5" placeholder="Message"></textarea>
+                    <input type="submit" value="Send">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metal Scrap Importer</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'PT Sans', Arial, Helvetica, sans-serif;
+            color: #747474;
+            line-height: 1.6;
+        }
+        
+        /* Header Image Section */
+        .header-image {
+            width: 100%;
+            max-width: 1129px;
+            margin: 0 auto;
+            box-shadow: 0 17px 10px rgba(226,226,226,0.4);
+        }
+        
+        .header-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Content Sections */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .two-third {
+            width: 66.66%;
+            float: left;
+            padding-right: 4%;
+            box-sizing: border-box;
+        }
+        
+        .one-third {
+            width: 33.33%;
+            float: left;
+            box-sizing: border-box;
+        }
+        
+        /* Typography */
+        h1, h2, h3 {
+            color: #996a2d;
+        }
+        
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            font-size: 1.5em;
+            margin: 25px 0 15px;
+        }
+        
+        h3 {
+            font-size: 1.2em;
+            margin: 20px 0 10px;
+        }
+        
+        /* Lists */
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        /* Links */
+        a {
+            color: #333333;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: #996a2d;
+        }
+        
+        /* Form Styles */
+        .contact-form {
+            margin-top: 20px;
+        }
+        
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        .contact-form input[type="submit"] {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .contact-form input[type="submit"]:hover {
+            background: #fed03d;
+        }
+        
+        /* Clearfix */
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .two-third, .one-third {
+                width: 100%;
+                float: none;
+                padding-right: 0;
+            }
+        }
+    </style>
+
+
+
+    <div class="post-content">
+        <!-- Header Image --
+        <div class="header-image">
+            <img src="https://www.mudraglobal.com/wp-content/uploads/2020/09/Metal-and-alloy.jpeg" alt="Metal scrap importer | Metals and Alloys" width="1129" height="550">
+        </div>
+        
+        <!-- Main Content Section --
+        <div class="content-section clearfix">
+            <div class="two-third">
+                <h1><strong>Metal Scrap Importer</strong></h1>
+                <p>With time, growth in the supply of metal scraps is observed. The scrap metal is extensively used in the construction and manufacturing industries making it in demand. Also, as these scraps are recycled and used again in various industries, it helps in the development of a sustainable environment. As a growing company of metal scrap importer, we are striving towards the growth of the metal scraps and alloys industry.</p>
+                
+                <p>The metal scraps which is imported can be of various types:</p>
+                <ul>
+                    <li>Aluminum</li>
+                    <li>Brass</li>
+                    <li>Carbide</li>
+                    <li>Cobalt</li>
+                    <li>Copper</li>
+                    <li>Gold</li>
+                    <li>Iron</li>
+                    <li>Lead</li>
+                    <li>Nickel</li>
+                    <li>Silver</li>
+                    <li>Steel</li>
+                    <li>Titanium</li>
+                    <li>Tungsten</li>
+                </ul>
+                
+                <h2>International supplies from various countries</h2>
+                <p>International supplies from various countries are executed such as:</p>
+                <ul>
+                    <li>Import metal scrap from Africa to India</li>
+                    <li>Import metal scrap from the USA to India</li>
+                    <li>Import metal scrap from UAE to India.</li>
+                </ul>
+                
+                <p>Following are some of the business standards and guidelines that we follow while supplying metal scraps and alloys –</p>
+                
+                <h2>Metal scrap policy:</h2>
+                <ol>
+                    <li>According to the foreign trade policy and business standards, any type of metal scrap is allowed as long as it does not contain any hazardous material, radioactive waste, toxic waste, any kind of arms, ammunition, shells, mines, cartridges(used or live) or any other explosives.</li>
+                    <li>The director-general of foreign trade released a notice in 2017 stating that all un-shredded scrap metal imports must be shipped to ports equipped with radiation detection equipment.</li>
+                    <li>Imports permitted in the shredded form without a license can be in the case of certain metals (iron, nickel, tin, aluminum, zinc, copper, magnesium, steel) coming under specified entries in the <a href="https://www.intracen.org/">ITC</a> (HS) classification.</li>
+                </ol>
+                
+                <h3>How to import copper scrap:</h3>
+                <p><strong>Some of the necessary process/documentation of importing copper scrap are:</strong></p>
+                <ul>
+                    <li>According to the hazardous waste handling rules (2008) copper scrap in metallic, non-dispersible form and mixed non-ferrous metal, heavy fraction scrap not containing any constituents mentioned in schedule ii is permitted.</li>
+                    <li>A necessary certificate of clearance is needed from the Pollution Control Board. There can be many products that can have an effect on the environment thus to import specific kinds of effecting product clearance is needed from the pollution control board.</li>
+                    <li>A pre-Shipment inspection certificate is needed which is given by the agency of the exporter country.</li>
+                    <li>Government registration is required to act as a metal scrap importer.</li>
+                </ul>
+                
+                <p>Therefore from the above-mentioned information and guidelines, one can understand the basics of the system of trading metal scraps in and around the world and with the changing times of Globalization, the demand for metal scrap is increasing making the import of scraps a much talked about industry. With the aim of providing quality supplying services <a href="https://www.mudraglobal.com/">International Trading Company</a> acts as a leading metal scrap importer.</p>
+            </div>
+            
+            <div class="one-third">
+                <h2>Get In Touch</h2>
+                <div class="contact-form">
+                    <form action="/metal-scrap/" method="post">
+                        <p>
+                            <input type="text" name="text-957" placeholder="Name" size="40" required>
+                        </p>
+                        <p>
+                            <input type="email" name="email-527" placeholder="Email" size="40" required>
+                        </p>
+                        <p>
+                            <input type="text" name="text-569" placeholder="Contact Number" size="40" required>
+                        </p>
+                        <p>
+                            <input type="text" name="text-679" placeholder="Country Name" size="40" required>
+                        </p>
+                        <p>
+                            <textarea name="your-message" cols="40" rows="5" placeholder="Message"></textarea>
+                        </p>
+                        <p>
+                            <input type="submit" value="Send">
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> -->
+{% endblock body %}

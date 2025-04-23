@@ -1,0 +1,440 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock title %}
+
+{% block body %}
+
+{% load static %}
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Add this line to load Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<title>Import & Export | Merchant Exporter Company</title>
+<style>
+    /* Global Styles */
+    :root {
+        --primary-dark: #0A1E35;
+        --primary-accent: #D4AF37;
+        --text-light: #FFFFFF;
+        --text-gray: #CCCCCC;
+    }
+    
+    body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        color: var(--text-gray);
+        line-height: 1.6;
+        background-color: var(--primary-dark);
+    }
+    
+    .wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+    
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    /* Header Styles */
+    header {
+        background-color: var(--primary-dark);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+    }
+    
+    .logo img {
+        height: 50px;
+    }
+    
+    /* Hero Section */
+    .hero {
+        background: linear-gradient(rgba(10, 30, 53, 0.8), rgba(10, 30, 53, 0.9)), url('https://www.mudraglobal.com/wp-content/uploads/2023/10/Mudra-Global-Blog-IMG.png');
+        background-size: cover;
+        background-position: center;
+        height: 60vh;
+        display: flex;
+        align-items: center;
+        margin-top: 80px;
+        text-align: center;
+    }
+    
+    .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        color: var(--primary-accent);
+        text-transform: uppercase;
+    }
+    
+    /* Content Section */
+    .content-section {
+        padding: 80px 0;
+    }
+    
+    .section-title {
+        color: var(--primary-accent);
+        text-align: center;
+        margin-bottom: 60px;
+        font-size: 2.5rem;
+    }
+    
+    .service-item {
+        margin-bottom: 50px;
+        display: flex;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        padding: 30px;
+        transition: transform 0.3s ease;
+    }
+    
+    .service-item:hover {
+        transform: translateY(-10px);
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .service-image {
+        width: 150px;
+        margin-right: 30px;
+        flex-shrink: 0;
+    }
+    
+    .service-image img {
+        border-radius: 8px;
+    }
+    
+    .service-content {
+        flex: 1;
+    }
+    
+    .service-content h3 {
+        color: var(--primary-accent);
+        font-size: 1.8rem;
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+    
+    .service-content p {
+        margin-bottom: 15px;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .hero {
+            height: 50vh;
+            margin-top: 70px;
+        }
+        
+        .hero h1 {
+            font-size: 1.8rem;
+        }
+        
+        .service-item {
+            flex-direction: column;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .service-image {
+            margin-right: 0;
+            margin-bottom: 20px;
+            width: 120px;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .hero h1 {
+            font-size: 1.5rem;
+        }
+        
+        .service-content h3 {
+            font-size: 1.5rem;
+        }
+    }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<div class="wrapper">
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Mudra Global Merchant Import & Export Service</h1>
+        </div>
+    </section>
+    
+    <section class="content-section">
+        <div class="service-item">
+            <div class="service-image">
+                <img src="https://www.mudraglobal.com/wp-content/uploads/2023/05/mudra-150x150.png" alt="Merchant Export">
+            </div>
+            <div class="service-content">
+                <h3>Merchant Export/Trading Export</h3>
+                <p>Our company is involved in the import & export of a variety of food and commodities around the world. We work with a number of farmers, Merchant Exporter, agro suppliers, distributors and manufacturers around the world to supply the best quality items.</p>
+                <p>We are providing import and export services on multiple continents around the world. We strive to source quality products and agro-commodities from our suppliers.</p>
+            </div>
+        </div>
+        
+        <div class="service-item">
+            <div class="service-image">
+                <img src="https://www.mudraglobal.com/wp-content/uploads/2023/05/acreaty-1-150x150.png" alt="Products Distribution">
+            </div>
+            <div class="service-content">
+                <h3>Products Distribution</h3>
+                <p>We also assist Businesses in worldwide purchasing, distribution and delivery. We have worked in a number of developing countries like Africa and Asia, USA, Middle East, Canada. We have enabled businesses to set up their distribution channels and place their products in the target markets.</p>
+                <p>We have teams of trained professionals, agents and partners in countries across the globe. We provide the channel setup and support to companies for product distribution and marketing.</p>
+            </div>
+        </div>
+        
+        <div class="service-item">
+            <div class="service-image">
+                <img src="https://www.mudraglobal.com/wp-content/uploads/2023/05/Market-analysis-2-150x150.png" alt="Market Analysis">
+            </div>
+            <div class="service-content">
+                <h3>Market Analysis</h3>
+                <p>We provide our clients with the latest opportunities, insights and perspectives to facilitate better decision making. Venturing in a new country or territory can be a challenging task for any organization. A company needs adequate market analysis and support to establish itself in a new market.</p>
+                <p>We have the skills, experience and required manpower to supply crucial information and reports that can facilitate expansion in a new territory.</p>
+            </div>
+        </div>
+        
+        <div class="service-item">
+            <div class="service-image">
+                <img src="https://www.mudraglobal.com/wp-content/uploads/2023/05/Negotiation-and-partnership-strategy-2-150x150.png" alt="Negotiation Strategy">
+            </div>
+            <div class="service-content">
+                <h3>Negotiation and Partnership Strategy</h3>
+                <p>We have a unique collaborative endeavor based on its own merits and homework that brings toward a win-win outcome. We have enabled companies from diverse geographies to come together and form an alliance.</p>
+                <p>If you want to operate in a foreign country, it becomes the need of the hour to form an alliance with a local organization that can enable business set-up and expansion.</p>
+            </div>
+        </div>
+        
+        <div class="service-item">
+            <div class="service-image">
+                <img src="https://www.mudraglobal.com/wp-content/uploads/2023/05/Negotiation-and-partnership-strategy-150x150.png" alt="Business Consulting">
+            </div>
+            <div class="service-content">
+                <h3>International Business Consulting</h3>
+                <p>Establishing a business abroad can be a complex task. We possess the ability to guide our clients through complex regulations and policies of a local country.</p>
+                <p>We have the capability of accessing the local political environment, foreign investment regulations, economic progress, currency valuation, demography, product/services forecast, etc for any country or region.</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Font Awesome for icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <!-- <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Add this line to load Font Awesome --
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <title>Import & Export | Merchant Exporter Company</title>
+    <style>
+        /* Global Styles 
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+        
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Header Styles 
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo img {
+            height: 50px;
+        }
+        
+        
+        
+        /* Hero Section 
+        .hero {
+            background-image: url('hero-image.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            margin-top: 80px;
+
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            color: #996a2d;
+        }
+        
+        .hero h1 {
+            font-size: 25px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        
+        /* Content Section 
+        .content-section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            color: #996a2d;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 36px;
+        }
+        
+        .service-item {
+            margin-bottom: 40px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .service-image {
+            width: 150px;
+            margin-right: 30px;
+        }
+        
+        .service-content {
+            flex: 1;
+        }
+        
+        .service-content h3 {
+            color: #996a2d;
+            font-size: 24px;
+            margin-top: 0;
+        }
+        
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+
+    <div class="wrapper" style="margin-top: 100px;">
+        <img fetchpriority="high" decoding="async" src="https://www.mudraglobal.com/wp-content/uploads/2023/10/Mudra-Global-Blog-IMG.png" width="2000" height="600" alt="" title="Mudra Global Blog IMG" class="img-responsive wp-image-2851 lazyloaded" sizes="(max-width: 800px) 100vw, 1200px">
+
+        
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Mudra Global Merchant Import & Export Service</h1>
+            </div>
+        </section>
+        
+        <section class="content-section">
+
+            
+            <div class="service-item">
+                <div class="service-image">
+                    <img src="https://www.mudraglobal.com/wp-content/uploads/2023/05/mudra-150x150.png" alt="Merchant Export">
+                </div>
+                <div class="service-content">
+                    <h3>Merchant Export/Trading Export</h3>
+                    <p>Our company is involved in the import & export of a variety of food and commodities around the world. We work with a number of farmers, Merchant Exporter, agro suppliers, distributors and manufacturers around the world to supply the best quality items.</p>
+                    <p>We are providing import and export services on multiple continents around the world. We strive to source quality products and agro-commodities from our suppliers.</p>
+                </div>
+            </div>
+            
+            <div class="service-item">
+                <div class="service-image">
+                    <img src="https://www.mudraglobal.com/wp-content/uploads/2023/05/acreaty-1-150x150.png" alt="Products Distribution">
+                </div>
+                <div class="service-content">
+                    <h3>Products Distribution</h3>
+                    <p>We also assist Businesses in worldwide purchasing, distribution and delivery. We have worked in a number of developing countries like Africa and Asia, USA, Middle East, Canada. We have enabled businesses to set up their distribution channels and place their products in the target markets.</p>
+                    <p>We have teams of trained professionals, agents and partners in countries across the globe. We provide the channel setup and support to companies for product distribution and marketing.</p>
+                </div>
+            </div>
+            
+            <div class="service-item">
+                <div class="service-image">
+                    <img src="https://www.mudraglobal.com/wp-content/uploads/2023/05/Market-analysis-2-150x150.png" alt="Market Analysis">
+                </div>
+                <div class="service-content">
+                    <h3>Market Analysis</h3>
+                    <p>We provide our clients with the latest opportunities, insights and perspectives to facilitate better decision making. Venturing in a new country or territory can be a challenging task for any organization. A company needs adequate market analysis and support to establish itself in a new market.</p>
+                    <p>We have the skills, experience and required manpower to supply crucial information and reports that can facilitate expansion in a new territory.</p>
+                </div>
+            </div>
+            
+            <div class="service-item">
+                <div class="service-image">
+                    <img src="https://www.mudraglobal.com/wp-content/uploads/2023/05/Negotiation-and-partnership-strategy-2-150x150.png" alt="Negotiation Strategy">
+                </div>
+                <div class="service-content">
+                    <h3>Negotiation and Partnership Strategy</h3>
+                    <p>We have a unique collaborative endeavor based on its own merits and homework that brings toward a win-win outcome. We have enabled companies from diverse geographies to come together and form an alliance.</p>
+                    <p>If you want to operate in a foreign country, it becomes the need of the hour to form an alliance with a local organization that can enable business set-up and expansion.</p>
+                </div>
+            </div>
+            
+            <div class="service-item">
+                <div class="service-image">
+                    <img src="https://www.mudraglobal.com/wp-content/uploads/2023/05/Negotiation-and-partnership-strategy-150x150.png" alt="Business Consulting">
+                </div>
+                <div class="service-content">
+                    <h3>International Business Consulting</h3>
+                    <p>Establishing a business abroad can be a complex task. We possess the ability to guide our clients through complex regulations and policies of a local country.</p>
+                    <p>We have the capability of accessing the local political environment, foreign investment regulations, economic progress, currency valuation, demography, product/services forecast, etc for any country or region.</p>
+                </div>
+            </div>
+        </section>
+        
+
+    </div>
+    
+    <!-- Font Awesome for icons --
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> -->
+{% endblock body %}

@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock title %}
+
+{% block body %}
+
+{% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Company Name</title>
+    <style>
+        :root {
+            --primary-dark: #0A1E35;
+            --primary-accent: #D4AF37;
+            --text-light: #FFFFFF;
+            --text-gray: #CCCCCC;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+        }
+        
+        
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background: linear-gradient(rgba(10, 30, 53, 0.8), rgba(10, 30, 53, 0.9)), url('your-hero-image.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 40px;
+            color: var(--text-gray);
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            background-color: var(--primary-accent);
+            color: var(--primary-dark);
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        
+        .section {
+            padding: 50px 50px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 2.5rem;
+            color: #D4AF37
+        }
+        
+        .card-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 30px;
+            width: 300px;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .card h3 {
+            color: var(--primary-accent);
+        }
+        
+        footer {
+            background-color: #081829;
+            padding: 50px;
+            text-align: center;
+        }
+    </style>
+
+    
+    <section class="hero">
+        <h1>Global Financial Solutions</h1>
+        <p>Delivering innovative financial services with a global perspective and local expertise.</p>
+        <button class="btn">Learn More</button>
+    </section>
+    
+    <section class="section">
+        <h2 class="section-title">Our Services</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>Investment Banking</h3>
+                <p>Comprehensive financial advisory and capital raising services for corporations and institutions.</p>
+            </div>
+            <div class="card">
+                <h3>Asset Management</h3>
+                <p>Tailored investment solutions to help clients achieve their financial objectives.</p>
+            </div>
+            <div class="card">
+                <h3>Wealth Management</h3>
+                <p>Personalized strategies to preserve and grow your wealth across generations.</p>
+            </div>
+        </div>
+    </section>
+    
+{% endblock body %}
