@@ -125,3 +125,16 @@ STATICFILES_DIRS=[STATIC_DIR,]
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Email Configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.yourprovider.com'  # e.g., 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'noreply@yourdomain.com'
+EMAIL_HOST_PASSWORD = 'your-email-password'
+
+# Custom settings
+DEFAULT_FROM_EMAIL = 'noreply@yourdomain.com'
+ENQUIRY_EMAIL = 'enquiries@yourdomain.com'  # Where admin notifications go
