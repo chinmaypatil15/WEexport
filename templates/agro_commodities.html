@@ -180,6 +180,8 @@
 
     .contact-form input[type="text"],
     .contact-form input[type="email"],
+    .contact-form input[type="tel"],
+    .contact-form select,
     .contact-form textarea {
         width: 100%;
         padding: 12px;
@@ -474,26 +476,46 @@
         <div class="one-third">
             <div class="contact-form">
                 <h2>Get In Touch</h2>
-                <form action="/agro-commodities/" method="post">
+                <form action="{% url 'contact_submit' %}" method="POST">
+                    {% csrf_token %}
+                    
                     <p>
-                        <input type="text" name="text-957" placeholder="Name" size="40" required>
+                        <input type="text" name="name" placeholder="Name" size="40" required>
                     </p>
                     <p>
-                        <input type="email" name="email-527" placeholder="Email" size="40" required>
+                        <input type="email" name="email" placeholder="Email" size="40" required>
                     </p>
                     <p>
-                        <input type="text" name="text-569" placeholder="Contact Number" size="40" required>
+                        <input type="tel" name="mobile" placeholder="Contact Number" pattern="[0-9]{10}" title="10-digit number without spaces or dashes" size="40" required>
                     </p>
                     <p>
-                        <input type="text" name="text-679" placeholder="Country Name" size="40" required>
+                        <input type="text" name="country" placeholder="Country Name" size="40">
                     </p>
                     <p>
-                        <textarea name="your-message" cols="40" rows="5" placeholder="Message"></textarea>
+                        <input type="text" name="subject" placeholder="Subject (optional)" size="40">
                     </p>
+                    
+                    <!-- 👇 Category dropdown with inline styling -->
+                    <p>
+                        <select name="category" required style="color: var(--text-light); margin-bottom: 20px;">
+                            <option value="" disabled selected>Select Category</option>
+                            <option style="color: var(--text-light); background-color: #424f5c" value="general">General Inquiry</option>
+                            <option style="color: var(--text-light); background-color: #424f5c" value="support">Technical Support</option>
+                            <option style="color: var(--text-light); background-color: #424f5c" value="feedback">Feedback</option>
+                            <option style="color: var(--text-light); background-color: #424f5c" value="sales">Sales Question</option>
+                            <option style="color: var(--text-light); background-color: #424f5c" value="other">Other</option>
+                        </select>
+                    </p>
+                
+                    <p>
+                        <textarea name="message" cols="40" rows="5" placeholder="Message" required></textarea>
+                    </p>
+                
                     <p>
                         <input type="submit" value="Send">
                     </p>
                 </form>
+                
             </div>
         </div>
     </div>

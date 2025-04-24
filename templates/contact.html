@@ -146,7 +146,7 @@
             font-size: 15px;
         }
         
-        input, textarea {
+        input, textarea, select {
             width: 100%;
             padding: 14px 20px;
             border: 1px solid rgba(0, 0, 0, 0.1);
@@ -157,7 +157,7 @@
             color: var(--primary-dark);
         }
         
-        input:focus, textarea:focus {
+        input:focus, textarea:focus, select:focus {
             outline: none;
             border-color: var(--primary-accent);
             box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
@@ -430,6 +430,15 @@
                     <input type="email" id="email" name="email" required>
                 </div>
 
+                <!-- New Mobile Number Field -->
+                <div class="form-group">
+                    <label for="mobile">Mobile Number</label>
+                    <input type="tel" id="mobile" name="mobile" 
+                        pattern="[0-9]{10}" 
+                        title="10-digit number without spaces or dashes" required>
+                </div>
+
+
                 <div style="display:none;">
                     <label for="id_phone_number">Phone Number</label>
                     <input type="text" name="phone_number" id="id_phone_number">
@@ -442,7 +451,7 @@
                 
                 <div class="form-group">
                     <label for="category">Category</label>
-                    <select id="category" name="category">
+                    <select type="category" id="category" name="category">
                         <option value="general">General Inquiry</option>
                         <option value="support">Technical Support</option>
                         <option value="feedback">Feedback</option>

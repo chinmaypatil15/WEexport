@@ -1,8 +1,6 @@
 from django.db import models
 
 # Create your models here.
-# models.py
-from django.db import models
 
 class ContactSubmission(models.Model):
     CATEGORY_CHOICES = [
@@ -15,6 +13,8 @@ class ContactSubmission(models.Model):
     
     name = models.CharField(max_length=100)
     email = models.EmailField()
+    mobile = models.CharField(max_length=15)
+    country = models.CharField(max_length=100, blank=True)
     subject = models.CharField(max_length=200, blank=True)
     message = models.TextField()
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default='general')

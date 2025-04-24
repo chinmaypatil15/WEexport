@@ -13,6 +13,9 @@ def services(request):
 def products(request):
     return render(request, 'products.html')
 
+# def contact(request):
+#     return render(request, 'contact.html')
+
 # from django.shortcuts import render, redirect
 # from django.contrib import messages
 # from django.core.mail import send_mail
@@ -154,6 +157,7 @@ def contact(request):
             
             Name: {contact_submission.name}
             Email: {contact_submission.email}
+            Mobile: {contact_submission.mobile}
             Subject: {contact_submission.subject}
             Category: {contact_submission.get_category_display()}
             Message: 
@@ -255,3 +259,102 @@ def frozen_foods(request):
     return render(request, 'frozen_foods.html')
 
 
+from django.shortcuts import render, redirect
+from django.core.mail import EmailMultiAlternatives
+from django.utils.html import strip_tags
+from django.conf import settings
+from django.template.loader import render_to_string
+from django.contrib import messages
+
+from .models import ContactSubmission
+from .utils import send_logged_email  # Optional if you're using it
+@ratelimit(key='ip', rate='5/h', block=True)
+def contact_submit(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        mobile = request.POST.get("mobile")
+        subject = request.POST.get("subject", "")
+        category = request.POST.get("category", "general")
+        message = request.POST.get("message", "")
+        country = request.POST.get("country", "")
+        # Save to database
+        contact_submission = ContactSubmission.objects.create(
+            name=name,
+            email=email,
+            mobile=mobile,
+            country=country,
+            subject=subject,
+            category=category,
+            message=message
+        )
+
+        # Prepare admin email
+        admin_subject = f"New Enquiry: {subject}"
+        admin_message = f"""
+        New enquiry received:
+
+        Name: {name}
+        Email: {email}
+        Mobile: {mobile}
+        Subject: {subject}
+        Category: {contact_submission.get_category_display()}
+        Message:
+        {message}
+
+        Submission Time: {contact_submission.submitted_at}
+        """
+
+        # Prepare user thank-you email
+        user_subject = "Thank you for your enquiry"
+        user_html_message = render_to_string('emails/thank_you_email.html', {
+            'name': name,
+            'subject': subject,
+        })
+        user_text_message = strip_tags(user_html_message)
+
+        try:
+            # Preferred: using utility function to log & send
+            send_logged_email(
+                admin_subject,
+                admin_message,
+                settings.DEFAULT_FROM_EMAIL,
+                [settings.ENQUIRY_EMAIL],
+                submission=contact_submission
+            )
+
+            send_logged_email(
+                user_subject,
+                user_text_message,
+                settings.DEFAULT_FROM_EMAIL,
+                [email],
+                html_message=user_html_message,
+                submission=contact_submission
+            )
+
+            # Fallback: directly use EmailMultiAlternatives
+            """
+            admin_email = EmailMultiAlternatives(
+                admin_subject,
+                admin_message,
+                settings.DEFAULT_FROM_EMAIL,
+                [settings.ENQUIRY_EMAIL],
+            )
+            user_email = EmailMultiAlternatives(
+                user_subject,
+                user_text_message,
+                settings.DEFAULT_FROM_EMAIL,
+                [email],
+            )
+            user_email.attach_alternative(user_html_message, "text/html")
+            admin_email.send()
+            user_email.send()
+            """
+
+        except Exception as e:
+            print(f"Email sending failed: {e}")
+
+        messages.success(request, "Your enquiry has been submitted successfully!")
+        return redirect("thank_you")  # or your desired thank-you page
+
+    return redirect("home")

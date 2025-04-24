@@ -320,7 +320,8 @@
     }
     
     .contact-form input,
-    .contact-form textarea {
+    .contact-form textarea,
+    .contact-form select {
         width: 100%;
         padding: 15px;
         margin-bottom: 20px;
@@ -648,14 +649,35 @@
         </div>
         
         <div class="contact-form">
-            <form>
-                <input type="text" placeholder="Name" required>
-                <input type="email" placeholder="Email" required>
-                <input type="text" placeholder="Contact Number" required>
-                <input type="text" placeholder="Country Name" required>
-                <textarea placeholder="Message" rows="5"></textarea>
+            <form action="{% url 'contact_submit' %}" method="POST">
+                {% csrf_token %}
+            
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="tel" name="mobile" placeholder="Contact Number" 
+                       pattern="[0-9]{10}" title="10-digit number without spaces or dashes" required>
+                
+                <input type="text" name="country" placeholder="Country Name">
+                <input type="text" name="subject" placeholder="Subject (optional)">
+            
+                <!-- 👇 Category styled same as inputs -->
+                <div class="form-group">
+                    <select name="category" required style="margin-bottom: 20px;">
+                        <option value="" disabled selected>Select Category</option>
+                        <option style="color: var(--text-light); background-color: #424f5c" value="general">General Inquiry</option>
+                        <option style="color: var(--text-light); background-color: #424f5c" value="support">Technical Support</option>
+                        <option style="color: var(--text-light); background-color: #424f5c" value="feedback">Feedback</option>
+                        <option style="color: var(--text-light); background-color: #424f5c" value="sales">Sales Question</option>
+                        <option style="color: var(--text-light); background-color: #424f5c" value="other">Other</option>
+                    </select>
+                </div>
+            
+                <textarea name="message" placeholder="Message" rows="5" required></textarea>
+            
                 <button type="submit">Send</button>
             </form>
+            
+            
         </div>
     </div>
 </section>
