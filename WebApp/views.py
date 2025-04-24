@@ -358,3 +358,10 @@ def contact_submit(request):
         return redirect("thank_you")  # or your desired thank-you page
 
     return redirect("home")
+
+def business_consulting(request):
+    return render(request, 'business_consulting.html')
+
+def MerchantExporterServices(request):
+    return render(request, 'MerchantExporterServices.html')
+

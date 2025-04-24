@@ -16,4 +16,6 @@ urlpatterns = [
     path('agro-commodities/', views.agro_commodities, name='agro_commodities'),
     path('industrialproduct/', views.industrialproduct, name='industrialproduct'),
     path('frozen-foods/', views.frozen_foods, name='frozen_foods'),
+    path('business-consulting/', views.business_consulting, name='business_consulting'),
+    path('merchant-exporter-services/', views.MerchantExporterServices, name='MerchantExporterServices'),
 ]

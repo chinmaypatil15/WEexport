@@ -8,6 +8,8 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 <title>Industrial Products - General Trading</title>
 
 <style>
@@ -359,14 +361,34 @@
         <div class="col-1-3">
             <div class="contact-form">
                 <h2>Get In Touch</h2>
-                <form action="#" method="post">
+                <form action="{% url 'contact_submit' %}" method="POST">
+                    {% csrf_token %}
+                    
                     <input type="text" name="name" placeholder="Name" required>
                     <input type="email" name="email" placeholder="Email" required>
-                    <input type="text" name="contact" placeholder="Contact Number" required>
+                    
+                    <input type="tel" name="mobile" placeholder="Contact Number"
+                           pattern="[0-9]{10}" title="10-digit number without spaces or dashes" required>
+                    
                     <input type="text" name="country" placeholder="Country Name" required>
-                    <textarea name="message" placeholder="Message" rows="5"></textarea>
+                    
+                    <input type="text" name="subject" placeholder="Subject (optional)">
+                    
+                    <!-- Category dropdown -->
+                    <select name="category" required style="margin-bottom: 15px; width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #ccc; background-color: #424f5c; color: var(--text-light);">
+                        <option value="" disabled selected>Select Category</option>
+                        <option style="color: var(--text-light); background-color: #424f5c" value="general">General Inquiry</option>
+                        <option style="color: var(--text-light); background-color: #424f5c" value="support">Technical Support</option>
+                        <option style="color: var(--text-light); background-color: #424f5c" value="feedback">Feedback</option>
+                        <option style="color: var(--text-light); background-color: #424f5c" value="sales">Sales Question</option>
+                        <option style="color: var(--text-light); background-color: #424f5c" value="other">Other</option>
+                    </select>
+                    
+                    <textarea name="message" placeholder="Message" rows="5" required></textarea>
+                    
                     <input type="submit" value="Send">
                 </form>
+                
             </div>
             
             <div class="download-box">
@@ -376,288 +398,6 @@
         </div>
     </div>
 </main>
-    <!-- <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Industrial Products - General Trading</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-        }
-        .container {
-            width: 100%;
-            max-width: 1250px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        .full-width {
-            width: 100%;
-            margin-bottom: 30px;
-        }
-        .full-width img {
-            width: 80%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
-        .row {
-            display: flex;
-            flex-wrap: wrap;
-            margin-right: -15px;
-            margin-left: -15px;
-        }
-        .col-2-3 {
-            flex: 0 0 66.6666%;
-            max-width: 66.6666%;
-            padding: 0 15px;
-        }
-        .col-1-3 {
-            flex: 0 0 33.3333%;
-            max-width: 33.3333%;
-            padding: 0 15px;
-        }
-        .col-1-2 {
-            flex: 0 0 50%;
-            max-width: 50%;
-            padding: 0 15px;
-        }
-        h1, h2, h3 {
-            color: #996a2d;
-            margin-top: 25px;
-            margin-bottom: 15px;
-        }
-        h1 {
-            font-size: 28px;
-        }
-        h2 {
-            font-size: 24px;
-        }
-        h3 {
-            font-size: 20px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 8px;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-        ul {
-            padding-left: 20px;
-            margin-bottom: 15px;
-        }
-        .content-box {
-            margin-bottom: 40px;
-            background: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .product-section {
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
-        }
-        .product-section:last-child {
-            border-bottom: none;
-        }
-        .contact-form {
-            background: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        .contact-form input[type="submit"] {
-            background-color: #333;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .contact-form input[type="submit"]:hover {
-            background-color: #996a2d;
-        }
-        .product-image {
-            float: left;
-            margin-right: 20px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            padding: 5px;
-            background: white;
-        }
-        .clearfix::after {
-            content: "";
-            clear: both;
-            display: table;
-        }
-        .download-box {
-            background: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .download-box h2 {
-            margin-top: 0;
-        }
-        @media (max-width: 768px) {
-            .col-2-3, .col-1-3, .col-1-2 {
-                flex: 0 0 100%;
-                max-width: 100%;
-            }
-            .product-image {
-                float: none;
-                display: block;
-                margin: 0 auto 15px;
-            }
-        }
-    </style>
-
-    <div class="full-width">
-        <img src="https://www.mudraglobal.com/wp-content/uploads/2020/09/General-trading-products.jpeg" alt="General trading products">
-    </div>
-    
-    <main class="container">
-        
-        <div class="row">
-            <div class="col-2-3">
-                <div class="content-box">
-                    <h1><strong>GENERAL TRADING PRODUCTS</strong></h1>
-                    <p>Appliances and consumer electronics goods have always been a vital part of the economy. The appliances and consumer electronics market reached a very high mark boosting the general trading products industry. This industry is expected to get doubled by 2025. With the aim of contributing to the above-expected growth of the industry, as a General Trading Company, we strive to export a wide range of modern general trading products to the international markets.</p>
-                    
-                    <p><strong>Some of the categories of general trade products are:</strong></p>
-                    <ul>
-                        <li>Mechanical products – Ceiling fans, exhausts, sewing machines, etc.</li>
-                        <li>Mechanical consumer products – bicycles (for Girls/Boys)</li>
-                        <li>Gym or fitness equipment</li>
-                        <li>Cooking Appliances</li>
-                        <li>Food processors</li>
-                        <li>Brewing Appliances</li>
-                        <li>Garment Care appliance & Personal Grooming</li>
-                        <li>Temperature control appliances</li>
-                        <li>Building circuit protection, cables, switches</li>
-                        <li>Industrial Products</li>
-                        <li>Motors and pumps.</li>
-                    </ul>
-                </div>
-                
-                <div class="content-box">
-                    <p>The growth in demand for these products is likely to rise with the increase in disposable incomes and credits in the coming years. We are a <a href="https://www.mudraglobal.com/">general trading company</a> supplying these products and services to various parts of the world such as providing general trading products in Dubai etc.</p>
-                    
-                    <div class="product-section">
-                        <h3><a href="https://www.mudraglobal.com/bicycle-exporters-in-india/">Bicycle traders</a></h3>
-                        <div class="clearfix">
-                            <img class="product-image" src="https://www.mudraglobal.com/wp-content/uploads/2020/10/WhatsApp-Image-2020-10-19-at-11.54.18.jpeg" alt="Bicycles Exporters in India - mudra global" width="270">
-                            <p>With the increase of awareness about the green environment, pollution, health consciousness, and fuel price hike, bicycles are gradually becoming famous among various sections of the world. Some of the trade destinations are Africa, Bangladesh, and the U.K., etc.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="product-section">
-                        <h3>Gym Equipment supplier</h3>
-                        <div class="clearfix">
-                            <img class="product-image" src="https://www.mudraglobal.com/wp-content/uploads/2020/10/WhatsApp-Image-2020-10-19-at-11.38.29.jpeg" alt="Gym Equipment - Mudra Global" width="270">
-                            <p>With the development of more fitness conscious and healthy world, the demand for gym or fitness equipment is increasing at a very high rate. Mudra Global services can provide you with the finest fitness and gym equipment that one desires for.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="product-section">
-                        <h3>Sewing machine traders</h3>
-                        <div class="clearfix">
-                            <img class="product-image" src="https://www.mudraglobal.com/wp-content/uploads/2020/10/WhatsApp-Image-2020-10-19-at-11.38.31.jpeg" alt="Sewing machine- Mudra Global" width="270">
-                            <p>Sewing machines are the most important and integral part of the apparel industry. With the technology advancements, sewing machines have become more –</p>
-                            <ul>
-                                <li>Enhanced in performance</li>
-                                <li>Reducing downtime</li>
-                                <li>Added computer interface</li>
-                            </ul>
-                            <p>These machines are used in domestic as well as industrial sectors. We are the prime sewing machine suppliers and traders, delivering quality machines to various parts of the world continents.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="product-section">
-                        <h3>Ceiling Fan Traders</h3>
-                        <div class="clearfix">
-                            <img class="product-image" src="https://www.mudraglobal.com/wp-content/uploads/2020/10/WhatsApp-Image-2020-10-19-at-11.38.28.jpeg" alt="Ceiling fan - mudra Global" width="270">
-                            <p>With the Global competitiveness fans industry is taking a reshape and growing in the international markets. Now with the better technologies and advancements, fans supplied are more –</p>
-                            <ul>
-                                <li>Energy efficient (saving up to 35% – 65%)</li>
-                                <li>Modernized appearance</li>
-                                <li>5 stars rated fans</li>
-                                <li>Less noise produced</li>
-                            </ul>
-                            <p>We can provide you with the best ceiling and exhaust fans that one can wish for containing all the modern features, sustainable, and having great functionalities. The types of fans available are Ceiling fans, Portable fans, pedestal fans, air circulators, Ventilation and Industrial fans & exhausts.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="product-section">
-                        <h3>Cooking Appliances</h3>
-                        <div class="clearfix">
-                            <img class="product-image" src="https://www.mudraglobal.com/wp-content/uploads/2020/10/WhatsApp-Image-2020-10-19-at-11.38.28-1.jpeg" alt="Cooking Appliances- Mudra Global" width="270">
-                            <p>The most common and used appliances in any household are cooking appliances. These include pressure and electric cookers, rice cookers, cooktops, cookware, ovens, toasters, Grillers, Air fryer, sandwich maker, meal maker.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="product-section">
-                        <h3>Food processors</h3>
-                        <div class="clearfix">
-                            <img class="product-image" src="https://www.mudraglobal.com/wp-content/uploads/2020/10/WhatsApp-Image-2020-10-19-at-11.38.29-1-1.jpeg" alt="Food processors - mudra Global" width="270">
-                            <p>These are the preparation appliances that help in the food processor and helps in the easement of cooking activities. These include Mixer Grinders, Juicer Mixer Grinders, Juicer, Hand Blenders, Food Processors, choppers, etc.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="product-section">
-                        <h3>Brewers</h3>
-                        <div class="clearfix">
-                            <img class="product-image" src="https://www.mudraglobal.com/wp-content/uploads/2020/10/mudra.jpg" alt="Brewers - Mudra Global" width="270">
-                            <p>These include the beverage makers also called brewers that are used in most of our households to make refreshment drinks like tea coffee. These are coffee makers, electric kettles, tea makers.</p>
-                        </div>
-                    </div>
-                    
-                    <p>The above-mentioned appliances, products and devices can be found in the following brands</p>
-                    <ul>
-                        <li><a href="https://www.havells.com/">Havells</a></li>
-                        <li>Morphy Richards</li>
-                        <li>Bajaj</li>
-                    </ul>
-                    
-                    <p>Therefore Mudra Global as an international trading company that deals with the trade of general trading products in the international market supplying some of the widest range of finest quality products from around the world at a viable rate.</p>
-                </div>
-            </div>
-            
-            <div class="col-1-3">
-                <div class="contact-form">
-                    <h2>Get In Touch</h2>
-                    <form action="#" method="post">
-                        <input type="text" name="name" placeholder="Name" required>
-                        <input type="email" name="email" placeholder="Email" required>
-                        <input type="text" name="contact" placeholder="Contact Number" required>
-                        <input type="text" name="country" placeholder="Country Name" required>
-                        <textarea name="message" placeholder="Message" rows="5"></textarea>
-                        <input type="submit" value="Send">
-                    </form>
-                </div>
-                
-                <div class="download-box">
-                    <h2>Download Our Supermarket Tracks</h2>
-                    <p>Download our product catalog for more information about our offerings.</p>
-                </div>
-            </div>
-        </div>
-    </main> -->
     
 {% endblock body %}

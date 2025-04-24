@@ -1,0 +1,659 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock title %}
+
+{% block body %}
+
+{% load static %}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merchant Exporter Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #0A1E35;
+            --primary-accent: #D4AF37;
+            --text-light: #FFFFFF;
+            --text-gray: #CCCCCC;
+            --section-dark: #081829;
+            --section-light: #0F2A47;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        
+        /* Base Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-gray);
+            line-height: 1.7;
+            margin: 0;
+            overflow-x: hidden;
+            background-color: var(--primary-dark);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background: linear-gradient(135deg, rgba(10, 30, 53, 0.85) 0%, rgba(10, 30, 53, 0.95) 100%), 
+                        url('https://www.mudraglobal.com/wp-content/uploads/2023/12/Acreaty-Blog-IMG-3.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 100px;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, var(--primary-dark), transparent);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+        }
+        
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+            text-align: left;
+            padding-right: 2rem;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero-form {
+            flex: 1;
+            min-width: 300px;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            margin-bottom: 2rem;
+            color: var(--text-gray);
+        }
+        
+        /* Button Styles */
+        .btn {
+            padding: 1rem 2.5rem;
+            background-color: var(--primary-accent);
+            color: var(--primary-dark);
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn:hover {
+            background-color: #c19b2e;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
+        }
+        
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            color: var(--text-light);
+            font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-accent);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+        
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        /* Section Styles */
+        .section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+        
+        .section-dark {
+            background-color: var(--section-dark);
+        }
+        
+        .section-light {
+            background-color: var(--section-light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: var(--primary-accent);
+            position: relative;
+            width: 100%;
+            display: block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-accent);
+        }
+        
+        /* Card Styles */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: var(--transition);
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: var(--primary-accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+        
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .card:hover img {
+            transform: scale(1.03);
+        }
+        
+        .card h3 {
+            color: var(--primary-accent);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        
+        .card p {
+            color: var(--text-gray);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Services Section */
+        .services-section {
+            padding: 6rem 2rem;
+            text-align: center;
+            background-color: var(--section-dark);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .service-item {
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .service-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .service-item i {
+            font-size: 2.5rem;
+            color: var(--primary-accent);
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .service-item:hover i {
+            transform: scale(1.2);
+        }
+        
+        .service-item h3 {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .service-item p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+        
+        /* Testimonials */
+        .testimonials-section {
+            background-color: var(--section-light);
+            padding: 6rem 2rem;
+        }
+        
+        .testimonial {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary-accent);
+        }
+        
+        .testimonial q {
+            font-style: italic;
+            color: var(--text-gray);
+            display: block;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial .author {
+            color: var(--primary-accent);
+            font-weight: 600;
+        }
+        
+        /* Brands Section */
+        .brands-section {
+            padding: 6rem 2rem;
+            background-color: var(--section-dark);
+        }
+        
+        .brands-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .brand-logo {
+            width: 150px;
+            height: 80px;
+            object-fit: contain;
+            filter: grayscale(100%) brightness(0.8);
+            transition: var(--transition);
+            opacity: 0.7;
+        }
+        
+        .brand-logo:hover {
+            filter: grayscale(0%) brightness(1);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        .accordion {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--text-light);
+            cursor: pointer;
+            padding: 1.5rem;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid transparent;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .accordion:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .accordion.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-left-color: var(--primary-accent);
+        }
+        
+        .accordion::after {
+            content: '\002B';
+            color: var(--primary-accent);
+            font-weight: bold;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .accordion.active::after {
+            content: '\2212';
+            transform: rotate(0deg);
+        }
+        
+        .panel {
+            padding: 0 1.5rem;
+            background-color: rgba(0, 0, 0, 0.2);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            border-radius: 0 0 8px 8px;
+            margin-bottom: 1rem;
+        }
+        
+        .panel p {
+            padding: 1.5rem 0;
+            color: var(--text-gray);
+        }
+        
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .hero {
+                height: auto;
+                padding: 6rem 1rem;
+            }
+            
+            .hero-content {
+                flex-direction: column;
+            }
+            
+            .hero-text {
+                padding-right: 0;
+                margin-bottom: 2rem;
+                text-align: center;
+            }
+            
+            .section, .services-section, .testimonials-section, .brands-section {
+                padding: 4rem 1rem;
+            }
+            
+            .card-container, .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .brand-logo {
+                width: 120px;
+                height: 60px;
+            }
+        }
+    </style>
+
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Merchant Exporter Services</h1>
+                <p>Mudra Global has been formed to work progressively in the field of Merchant Exporter Services. We offer a secure platform to facilitate the supply of quality products across domestic and foreign countries.</p>
+                <button class="btn">Learn More</button>
+            </div>
+            <div class="hero-form">
+                <h3 style="color: var(--primary-accent); margin-bottom: 1.5rem; text-align: center; margin-top: 50px;">SEND US YOUR QUERY</h3>
+                
+                <form action="{% url 'contact_submit' %}" method="POST">
+                    {% csrf_token %}
+                    
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="mobile" placeholder="Contact Number" 
+                               pattern="[0-9]{10}" title="10-digit number without spaces or dashes" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="country" placeholder="Country Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="subject" placeholder="Subject (optional)">
+                    </div>
+            
+                    <div class="form-group">
+                        <select name="category" required style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #ccc; background-color: #424f5c; color: var(--text-light);">
+                            <option value="" disabled selected>Select Category</option>
+                            <option style="color: var(--text-light); background-color: #424f5c" value="general">General Inquiry</option>
+                            <option style="color: var(--text-light); background-color: #424f5c" value="support">Technical Support</option>
+                            <option style="color: var(--text-light); background-color: #424f5c" value="feedback">Feedback</option>
+                            <option style="color: var(--text-light); background-color: #424f5c" value="sales">Sales Question</option>
+                            <option style="color: var(--text-light); background-color: #424f5c" value="other">Other</option>
+                        </select>
+                    </div>
+            
+                    <div class="form-group">
+                        <textarea name="message" rows="4" placeholder="Message" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn" style="width: 100%; z-index: 10;">Send</button>
+                </form>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Product Categories Section -->
+    <section class="section section-light">
+        <h2 class="section-title">Our Product Categories</h2>
+        <div class="card-container">
+            <div class="card">
+                <img src="https://www.mudraglobal.com/wp-content/uploads/2023/10/mudra-global-.jpg" alt="Wood and Timber">
+                <h3>Wood and Timber</h3>
+                <p>High-quality wood and timber products for construction and manufacturing.</p>
+                <a href="https://www.mudraglobal.com/wood-and-timber/" class="btn" style="display: inline-block; padding: 0.8rem 1.5rem; font-size: 0.9rem;">Explore</a>
+            </div>
+            <div class="card">
+                <img src="https://www.mudraglobal.com/wp-content/uploads/2023/10/mudra-global-4.jpg" alt="Agro Commodities">
+                <h3>Agro Commodities</h3>
+                <p>Premium agricultural products sourced directly from farmers and suppliers.</p>
+                <a href="https://www.mudraglobal.com/agro-commodities/" class="btn" style="display: inline-block; padding: 0.8rem 1.5rem; font-size: 0.9rem;">Explore</a>
+            </div>
+            <div class="card">
+                <img src="https://www.mudraglobal.com/wp-content/uploads/2023/10/mudra-global-3.jpg" alt="Machinery and Vehicles">
+                <h3>Machinery and Vehicles</h3>
+                <p>Industrial machinery and vehicles for various applications.</p>
+                <a href="https://www.mudraglobal.com/machinery-and-vehicles/" class="btn" style="display: inline-block; padding: 0.8rem 1.5rem; font-size: 0.9rem;">Explore</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section section-dark">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 3rem;">
+            <div style="flex: 1; min-width: 300px;">
+                <h2 style="color: var(--primary-accent); font-size: 2rem; margin-bottom: 1.5rem;">Apparel Exporters & Suppliers</h2>
+                <p style="margin-bottom: 1.5rem;">Mudra Global is involved in the import and export of a variety of Apparel around the world. It's also assists Businesses in worldwide purchasing, distribution and delivery.</p>
+                <p style="margin-bottom: 2rem;">We have worked in a number of developing countries like Africa and Asia. Mudra Global has enabled businesses to set up their distribution channels and place their products in the target markets.</p>
+                <button class="btn">Contact Us</button>
+            </div>
+            <div style="flex: 1; min-width: 300px;">
+                <img src="https://www.mudraglobal.com/wp-content/uploads/2023/10/mudra-scaled.jpg" alt="Import Export Company" style="width: 100%; border-radius: 12px; box-shadow: 0 15px 30px rgba(0,0,0,0.3);">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <h2 class="section-title">Mudra Global Merchant Exporter Services</h2>
+        <div class="services-grid">
+            <div class="service-item">
+                <i class="fas fa-cart-arrow-down"></i>
+                <h3>Import & Export</h3>
+                <p>Mudra Global is involved in the import export of variety of food and commodity around the world.</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-shuttle-van"></i>
+                <h3>Products Distribution</h3>
+                <p>Mudra Global also assist Businesses in worldwide purchasing, delivery and analysis of commodity valuation.</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-chart-line"></i>
+                <h3>Market analysis</h3>
+                <p>We provide our clients with the latest opportunities, insights and perspectives to facilitate better decision making.</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-globe"></i>
+                <h3>International Business Consulting</h3>
+                <p>Establishing a business abroad can be a complex task. We possess the ability to guide its clients through complex regulations and policies of a local country.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <h2 class="section-title">Testimonials</h2>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="testimonial">
+                <q>After we have received the first shipment from Mudra Global for soft drinks, we only prefer them for our regular orders monthly. All of the products received from them till now is 100% authentic, brand certified and I highly appreciate their prompt service and genuine branded products.</q>
+                <div class="author">- John Smith</div>
+            </div>
+            <div class="testimonial">
+                <q>The Mudra Global team has been awesome! They are my go-to resource for export questions and they never fail to provide the necessary information.</q>
+                <div class="author">- Hakim</div>
+            </div>
+            <div class="testimonial">
+                <q>I highly recommend Mudra Global as a one-stop provider for all of your company's trade compliance needs. It is terrific to work with an organization that is able to adapt to our needs so readily and effectively.</q>
+                <div class="author">- Rufaro</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands Section -->
+    <section class="brands-section">
+        <h2 class="section-title">Our Associated Brands</h2>
+        <div class="brands-container">
+            <img src="https://www.mudraglobal.com/wp-content/uploads/2021/11/60107d7999eef2000443c2f0.png" alt="Brand Logo" class="brand-logo">
+            <img src="https://www.mudraglobal.com/wp-content/uploads/2021/11/2560px-Godrej_Logo.svg.png" alt="Brand Logo" class="brand-logo">
+            <img src="https://www.mudraglobal.com/wp-content/uploads/2021/11/1280px-Raymond_logo.svg.png" alt="Brand Logo" class="brand-logo">
+            <img src="https://www.mudraglobal.com/wp-content/uploads/2021/11/1200px-ITC_Limited_Logo.svg.png" alt="Brand Logo" class="brand-logo">
+            <img src="https://www.mudraglobal.com/wp-content/uploads/2021/11/1200px-Havells_Logo.svg.png" alt="Brand Logo" class="brand-logo">
+        </div>
+    </section>
+    <script>
+        // Accordion functionality
+        const accordions = document.getElementsByClassName("accordion");
+        
+        for (let i = 0; i < accordions.length; i++) {
+            accordions[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                const panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+{% endblock body %}

@@ -9,6 +9,8 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 <title>Metal Scrap Importer</title>
 <style>
     /* Global Styles */
@@ -247,14 +249,34 @@
         <div class="one-third">
             <h2>Get In Touch</h2>
             <div class="contact-form">
-                <form action="/metal-scrap/" method="post">
-                    <input type="text" name="text-957" placeholder="Name" required>
-                    <input type="email" name="email-527" placeholder="Email" required>
-                    <input type="text" name="text-569" placeholder="Contact Number" required>
-                    <input type="text" name="text-679" placeholder="Country Name" required>
-                    <textarea name="your-message" cols="40" rows="5" placeholder="Message"></textarea>
+                <form action="{% url 'contact_submit' %}" method="POST">
+                    {% csrf_token %}
+                    
+                    <input type="text" name="name" placeholder="Name" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    
+                    <input type="tel" name="mobile" placeholder="Contact Number"
+                           pattern="[0-9]{10}" title="10-digit number without spaces or dashes" required>
+                    
+                    <input type="text" name="country" placeholder="Country Name" required>
+                    
+                    <input type="text" name="subject" placeholder="Subject (optional)">
+                    
+                    <!-- Category dropdown -->
+                    <select name="category" required style="margin-bottom: 15px; width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #ccc; background-color: #424f5c; color: var(--text-light);">
+                        <option value="" disabled selected>Select Category</option>
+                        <option style="color: var(--text-light); background-color: #424f5c" value="general">General Inquiry</option>
+                        <option style="color: var(--text-light); background-color: #424f5c" value="support">Technical Support</option>
+                        <option style="color: var(--text-light); background-color: #424f5c" value="feedback">Feedback</option>
+                        <option style="color: var(--text-light); background-color: #424f5c" value="sales">Sales Question</option>
+                        <option style="color: var(--text-light); background-color: #424f5c" value="other">Other</option>
+                    </select>
+                    
+                    <textarea name="message" placeholder="Message" rows="5" required></textarea>
+                    
                     <input type="submit" value="Send">
                 </form>
+                
             </div>
         </div>
     </div>

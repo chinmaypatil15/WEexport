@@ -1,0 +1,765 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock title %}
+
+{% block body %}
+
+{% load static %}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mudra Global - International Business Consulting</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-dark: #0A1E35;
+            --primary-accent: #D4AF37;
+            --secondary-accent: #FF661B;
+            --text-light: #FFFFFF;
+            --text-gray: #CCCCCC;
+            --text-dark: #333333;
+        }
+        
+        body {
+            font-family: 'PT Sans', Arial, Helvetica, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Section */
+        .header-section {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 50px 0;
+            /* background: url('https://www.mudraglobal.com/wp-content/uploads/2023/12/Acreaty-Blog-IMG-3.png') left center no-repeat; */
+            background-size: cover;
+            color: white;
+        }
+
+        .header-content {
+            /* flex: 0 0 60%; */
+            flex: 1 1 48%;
+            max-width: 600px;
+            padding-right: 4%;
+        }
+
+        .header-form {
+            /* flex: 0 0 36%; */
+            flex: 1 1 48%;
+            max-width: 500px;
+            background-color: #183250;
+            padding: 20px 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-title {
+            color: var(--primary-accent);
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .header-subtitle {
+            color: var(--text-light);
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .header-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .header-list li {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        /* Form Styles */
+        .contact-form-box {
+            background-color: #996a2d;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .contact-form-box h2 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        .contact-form {
+            padding: 20px;
+        }
+
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .contact-form textarea {
+            height: 100px;
+        }
+
+        .contact-form input[type="submit"] {
+            background-color: #996a2d;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Awards Section */
+        .awards-section {
+            /* background: url('https://mudraglobal.com/wp-content/uploads/2020/05/mu_bg.jpg') center center repeat; */
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .section-title {
+            color: #993300;
+            font-size: 34px;
+            margin-bottom: 20px;
+        }
+
+        .section-title span {
+            color: var(--secondary-accent);
+        }
+
+        .section-subtitle {
+            color: #FF661B;
+            font-size: 25px;
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle span {
+            color: #003366;
+        }
+
+        .separator {
+            border-top: 2px solid #fed03d;
+            width: 206px;
+            margin: 0 auto 30px;
+        }
+
+        .awards-carousel {
+            display: flex;
+            overflow-x: auto;
+            gap: 13px;
+            padding: 20px 0;
+            scroll-behavior: smooth;
+        }
+
+        .awards-carousel img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* About Section */
+        .about-section {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 40px 0;
+            /* background: url('https://www.mudraglobal.com/wp-content/uploads/2023/12/Acreaty-Blog-IMG-3.png') center center repeat; */
+        }
+
+        .about-content {
+            flex: 0 0 60%;
+            max-width: 60%;
+            padding-right: 4%;
+        }
+
+        .about-list {
+            flex: 0 0 36%;
+            max-width: 36%;
+        }
+
+        .about-title {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .about-text {
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .btn-enquire {
+            background-color: #996a2d;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .checklist {
+            list-style-type: none;
+            padding: 0;
+            color: white;
+        }
+
+        .checklist li {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 15px;
+            color: white;
+            margin-top: 10px;
+        }
+
+        .checklist li:before {
+            content: "\f00c";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--text-dark);
+            color: white;
+
+        }
+
+        /* Services Section */
+        .services-section {
+            background: url('https://www.mudraglobal.com/wp-content/uploads/2023/12/Acreaty-Blog-IMG-4.png') center top no-repeat;
+            background-size: cover;
+            padding: 60px 30px;
+            color: white;
+            text-align: center;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .service-item {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .service-icon {
+            background-color: #b28023;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            color: white;
+            font-size: 60px;
+        }
+
+        .service-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        /* Team Section */
+        .team-section {
+            background: url('https://www.mudraglobal.com/wp-content/uploads/2023/12/Mglobal.jpg') center center no-repeat;
+            background-size: cover;
+            padding: 60px 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .team-members {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .team-member {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            width: 300px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .team-member img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .member-info {
+            padding: 20px;
+            color: var(--text-dark);
+        }
+
+        .member-name {
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .member-position {
+            color: #666;
+            margin: 5px 0 0;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            background: url('https://www.mudraglobal.com/wp-content/uploads/2023/12/Acreaty-Blog-IMG-4.png') center center no-repeat;
+            background-size: cover;
+            padding: 60px 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .testimonial {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 8px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+        }
+
+        /* Brands Section */
+        .brands-section {
+            background: url('https://www.mudraglobal.com/wp-content/uploads/2023/12/Acreaty-Blog-IMG-3.png') left top repeat;
+            padding: 60px 30px;
+            text-align: center;
+        }
+
+        .brands-carousel {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 30px 0;
+            scroll-behavior: smooth;
+        }
+
+        .brand-logo {
+            width: 150px;
+            height: 100px;
+            object-fit: contain;
+            filter: grayscale(100%);
+            transition: filter 0.3s;
+        }
+
+        .brand-logo:hover {
+            filter: grayscale(0%);
+        }
+
+        
+        .contact-column {
+            flex: 0 0 16.8%;
+            max-width: 16.8%;
+        }
+
+        .section-heading {
+            color: var(--primary-accent);
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        .accordion {
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 16px;
+            transition: 0.4s;
+            margin-bottom: 10px;
+        }
+
+        .accordion:hover {
+            background-color: #444;
+        }
+
+        .panel {
+            padding: 0 18px;
+            background-color: #222;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            margin-bottom: 10px;
+        }
+
+        .quick-links {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .quick-links li {
+            margin-bottom: 15px;
+        }
+
+        .quick-links a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .quick-links a:hover {
+            color: var(--primary-accent);
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+        }
+
+        .contact-info a {
+            color: white;
+        }
+
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 40px 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .header-content, .header-form, 
+            .about-content, .about-list,
+            .faq-column, .links-column, .contact-column {
+                flex: 0 0 100%;
+                max-width: 100%;
+                padding-right: 0;
+                margin-right: 0;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .header-form, .about-list {
+                margin-top: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .flex-container {
+                flex-direction: column;
+            }
+
+            .header-content, .header-form {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+
+            
+            .header-title {
+                font-size: 30px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-title {
+                font-size: 26px;
+            }
+            
+            .section-title {
+                font-size: 24px;
+            }
+            
+            .faq-section {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+
+
+    <!-- Header Section -->
+    <section class="header-section">
+        <div class="container flex-container">
+            <!-- Left Side Content -->
+            <div class="header-content">
+                <h1 class="header-title">Mudra Global Business Consulting Companies</h1>
+                <p class="header-subtitle">
+                    We are a very successful International Business Consulting & have transformed many small companies to become globally known with market presence in 50 countries and achieved exponential growth in revenue & profits.
+                    If you are a small / medium manufacturer, keen to develop Export markets without incurring huge initial costs of setting up a full-fledged Export Division, we can help you achieve your goals by being your International Marketing Partners & develop markets for your products globally.
+                </p>
+                <ul class="header-list">
+                    <li>International Trade</li>
+                    <li>Go-to-Market Strategy</li>
+                    <li>Emerging Markets</li>
+                    <li>Build a business model</li>
+                    <li>Expand the business</li>
+                </ul>
+            </div>
+        
+            <!-- Right Side Form -->
+            <div class="header-form">
+                <div class="contact-form-box">
+                    <h2>Talk to Our International Business Consultant</h2>
+                </div>
+                <form class="contact-form" action="{% url 'contact_submit' %}" method="POST">
+                    {% csrf_token %}
+        
+                    <input type="text" name="name" placeholder="Name" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="tel" name="mobile" placeholder="Contact Number"
+                           pattern="[0-9]{10}" title="10-digit number without spaces or dashes" required>
+                    <input type="text" name="country" placeholder="Country Name">
+                    <input type="text" name="subject" placeholder="Subject (optional)">
+        
+                    <select name="category" required style="margin-bottom: 15px; width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #ccc; background-color: #424f5c; color: var(--text-light);">
+                        <option style="color: var(--text-light);" value="" disabled selected>Select Category</option>
+                        <option style="color: var(--text-light); background-color: #424f5c" value="general">General Inquiry</option>
+                        <option style="color: var(--text-light); background-color: #424f5c" value="support">Technical Support</option>
+                        <option style="color: var(--text-light); background-color: #424f5c" value="feedback">Feedback</option>
+                        <option style="color: var(--text-light); background-color: #424f5c" value="sales">Sales Question</option>
+                        <option style="color: var(--text-light); background-color: #424f5c" value="other">Other</option>
+                    </select>
+        
+                    <textarea name="message" placeholder="Message" rows="5" required></textarea>
+                    <input type="submit" value="Send">
+                </form>
+            </div>
+        </div>
+        
+    </section>
+
+    <!-- Awards Section -->
+    <section class="awards-section">
+        <div class="container">
+            <h2 class="section-title">Leaders In <span>International Business Consulting</span></h2>
+            <h3 class="section-subtitle"><span>Awards</span> & Media</h3>
+            <div class="separator"></div>
+            <div class="awards-carousel">
+                <img src="https://www.mudraglobal.com/wp-content/uploads/2023/05/Mudra-Global-1-1.jpg" alt="Award">
+                <img src="https://www.mudraglobal.com/wp-content/uploads/2023/05/Mudraglobal-2.jpg" alt="Award">
+                <img src="https://www.mudraglobal.com/wp-content/uploads/2023/12/mudra-global-2-1.png" alt="Award">
+                <img src="https://www.mudraglobal.com/wp-content/uploads/2023/12/WhatsApp-Image-2021-02-26-at-15.07.43-2.jpeg" alt="Award">
+                <img src="https://www.mudraglobal.com/wp-content/uploads/2023/12/WhatsApp-Image-2021-02-26-at-15.07.43.jpeg" alt="Award">
+                <img src="https://www.mudraglobal.com/wp-content/uploads/2024/09/Mudraglobal-4.jpg" alt="Award">
+                <img src="https://www.mudraglobal.com/wp-content/uploads/2024/09/Mudraglobal-6.jpg" alt="Award">
+                <img src="https://www.mudraglobal.com/wp-content/uploads/2024/09/Mudraglobal-7.jpg" alt="Award">
+                <img src="https://www.mudraglobal.com/wp-content/uploads/2024/09/Mudraglobal-3.jpg" alt="Award">
+                <img src="https://www.mudraglobal.com/wp-content/uploads/2023/05/Mudra-Global-2.jpg" alt="Award">
+                <img src="https://www.mudraglobal.com/wp-content/uploads/2023/05/Mudraglobal-LLP.jpg" alt="Award">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="about-title">About International Business Consultants From Mudra Global</h2>
+                <p class="about-text">Mudra Global is involved in the import and export of a variety of Apparel around the world. It's also assists Businesses in worldwide purchasing, distribution and delivery. We have worked in a number of developing countries like Africa and Asia. Mudra Global has enabled businesses to set up their distribution channels and place their products in the target markets. We have teams of trained professionals, agents and partners in countries across the globe. We provide the channel setup and support to companies for product distribution and marketing.</p>
+                <button class="btn-enquire">Enquire Now</button>
+            </div>
+            <div class="about-list">
+                <ul class="checklist">
+                    <li>
+                        <p class="text-[20px] font-semibold mb-2">International Business at a glance</p>
+                    </li>
+                    <li>
+                        <p>Assists manufacturing industries to validate their business idea.</p>
+                    </li>
+                    <li>
+                        <p>International Business advisory firms work closely with clients to understand their capabilities and passion to develop a concrete business model</p>
+                    </li>
+                    <li>
+                        <p>Identify market opportunities and help to conquer them.</p>
+                    </li>
+                    <li>
+                        <p>Strategy execution and performance management</p>
+                    </li>
+                    <li>
+                        <p>International business advisory firms also provides guidance in Merger and acquisition.</p>
+                    </li>
+                    <li>
+                        <p>Complete roadmap to start the manufacturing industry.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <h2 class="section-title">International Business Services We Offer</h2>
+            <div class="separator"></div>
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-search-location"></i>
+                    </div>
+                    <h3 class="service-title">Market Research</h3>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3 class="service-title">Complete Industry Setup</h3>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3 class="service-title">Financial Advice</h3>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3 class="service-title">Branding & Marketing</h3>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="service-title">Product Development</h3>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-atlas"></i>
+                    </div>
+                    <h3 class="service-title">International Trade</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2>Meet Our International Business Experts</h2>
+            <p>Contact our team to discuss your needs using the request for service form. Alternatively, call us on <strong>+971 555 34 24 24</strong> to speak with an adviser in your nearest <strong>Mudra Global</strong> office.</p>
+            <div class="team-members">
+                <div class="team-member">
+                    <img src="https://www.mudraglobal.com/wp-content/uploads/2024/10/download-e1728371456221.jpg" alt="Neeru Anand">
+                    <div class="member-info">
+                        <h3 class="member-name">Neeru Anand</h3>
+                        <p class="member-position">Business Head</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="https://www.mudraglobal.com/wp-content/uploads/2023/05/Screenshot_34.png" alt="Paramjit Anand">
+                    <div class="member-info">
+                        <h3 class="member-name">Mr. Paramjit Anand</h3>
+                        <p class="member-position">Director</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="https://www.mudraglobal.com/wp-content/uploads/2024/10/sanjeev-sir-e1728389900790.png" alt="Sanjeev Chandra">
+                    <div class="member-info">
+                        <h3 class="member-name">Sanjeev Chandra</h3>
+                        <p class="member-position">Vice President</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2>What People Say About Us</h2>
+            <div class="separator" style="border-color: #dd8b0f;"></div>
+            <div class="testimonial">
+                <p class="testimonial-text">GOOD</p>
+                <p class="testimonial-author">GOOD, Your Content Goes Here</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands Section -->
+    <section class="brands-section">
+        <div class="container">
+            <h2 class="section-title">Our Associated Brands Companies Availed International Business Project Services</h2>
+            <div class="separator"></div>
+            <div class="brands-carousel">
+                <img src="https://www.mudraglobal.com/wp-content/uploads/2021/11/logo.png" alt="Brand" class="brand-logo">
+                <img src="https://www.mudraglobal.com/wp-content/uploads/2021/11/1024px-LOréal_logo.svg.png" alt="Brand" class="brand-logo">
+                <img src="https://www.mudraglobal.com/wp-content/uploads/2021/11/Untitled-5.png" alt="Brand" class="brand-logo">
+                <img src="https://www.mudraglobal.com/wp-content/uploads/2021/11/unilever-2-logo-png-transparent.png" alt="Brand" class="brand-logo">
+                <img src="https://www.mudraglobal.com/wp-content/uploads/2021/11/Nivea_logo.svg.png" alt="Brand" class="brand-logo">
+                <img src="https://www.mudraglobal.com/wp-content/uploads/2021/11/logo-aboutus.png" alt="Brand" class="brand-logo">
+                <img src="https://www.mudraglobal.com/wp-content/uploads/2021/11/JJ-logo.png" alt="Brand" class="brand-logo">
+                <img src="https://www.mudraglobal.com/wp-content/uploads/2021/11/dtjtd.png" alt="Brand" class="brand-logo">
+                <img src="https://www.mudraglobal.com/wp-content/uploads/2021/11/download.png" alt="Brand" class="brand-logo">
+                <img src="https://www.mudraglobal.com/wp-content/uploads/2021/11/com_1036622_phpMMVKxV5e44fa529d5968.39547876.png" alt="Brand" class="brand-logo">
+                <img src="https://www.mudraglobal.com/wp-content/uploads/2021/11/chr-equipment-cadbury-logo-news.png" alt="Brand" class="brand-logo">
+                <img src="https://www.mudraglobal.com/wp-content/uploads/2021/11/bajajElectricals.png" alt="Brand" class="brand-logo">
+            </div>
+        </div>
+    </section>
+
+    
+    <script>
+        // Accordion functionality
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                } 
+            });
+        }
+    </script>
+
+{% endblock body %}
