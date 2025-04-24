@@ -81,12 +81,36 @@
     
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-178678347-1"></script>
+    
+    
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'UA-178678347-1');
     </script>
+
+    <!-- SweetAlert2 CDN -->
+    <!-- SweetAlert2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    {% if messages %}
+    <script id="sweetalert-django-messages">
+        document.addEventListener("DOMContentLoaded", function() {
+            {% for message in messages %}
+            Swal.fire({
+                title: 'Success!',
+                text: "{{ message|escapejs }}",
+                icon: "success",
+                confirmButtonText: "OK",
+                timer: 3000,
+                timerProgressBar: true
+            });
+            {% endfor %}
+        });
+    </script>
+    {% endif %}
+
     
     <!-- Facebook Pixel -->
     <script>

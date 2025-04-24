@@ -228,7 +228,7 @@ def contact(request):
                 # You might want to log this to your error tracking system
                 
             messages.success(request, 'Your enquiry has been submitted successfully!')
-            return redirect('contact')
+            return redirect(request.META.get('HTTP_REFERER', 'contact'))
     
     else:
         form = ContactForm()
